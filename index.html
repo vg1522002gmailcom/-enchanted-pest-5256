@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>WELCOME TO MY MART</title>
+    <style>
+        #container {
+            display: flex;
+            /* background-color: whitesmoke; */
+            background-color: black;
+            color: white;
+            justify-content: space-around;
+        }
+
+        #nav1 {
+            display: flex;
+
+        }
+
+        #location {
+            height: 30px;
+            width: 75px;
+            /* margin-left: 0.5%; */
+            margin-top: 10%;
+
+        }
+
+        #nav2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-around
+        }
+
+        #navimage>img {
+            width: 180px;
+            height: 75px;
+            padding-right: 40%;
+            margin-left: 5%;
+        }
+
+        #navimage {
+            background-color: beige;
+            display: flex;
+            height: 50px;
+            padding: 1px;
+            padding-top: 1%;
+
+
+        }
+
+        #navimage>input {
+            padding-right: 15%;
+            margin-right: 1%;
+        }
+
+        #navimage>button {
+
+            background-color: cyan;
+            padding-right: 2%;
+            padding-left: 2%;
+        }
+
+        #images {
+            padding-top: 3%;
+            display: flex;
+            justify-content: space-between;
+            margin-left: 35%;
+            width: 100px;
+            height: 100px;
+
+
+
+
+        }
+
+        #sliding>img {
+            padding-bottom: 2%;
+            width: 100%;
+            height: 150px;
+            border: 6px solid silver;
+        }
+
+        #sliding2>img {
+            padding-bottom: 2%;
+            width: 100%;
+            height: 150px;
+        }
+        #dropdown{
+            display: none;
+            text-align: center;
+            background-color: azure;
+            width: 100%;
+            height: 50%;
+            z-index: 1;
+            /* display:none; */
+        }
+        #dropdown>input{
+            padding: 1% 10% 1% 0.5%;
+        }
+        #dropdown>div>button{
+            border-radius: 10%;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="nav1">
+            <h4>My Location</h4>
+            <select name="location" id="location">
+                <option value="">location</option>
+                <!-- <option value="gaderpur">gaderpur</option>
+                <option value="kalinager">kalinager</option>
+                <option value="dineshpur">dineshpur</option>
+                <option value="jaspur">jaspur</option> -->
+
+            </select>
+
+
+
+        </div>
+        <div id="nav2">
+            <p>How it Works | </p>
+            <p>List your Business |</p>
+            <h4>LOG IN</h4>
+            <h4>/</h4>
+            <h4>SIGN IN</h4>
+        </div>
+    </div>
+
+    <div id="navimage">
+        <img src="https://www.shutterstock.com/image-vector/my-dear-phrase-calligraphy-text-600w-1720789417.jpg" alt="">
+        <input type="text" placeholder=" Search restaurants, spa, events ">
+        <button>Search</button>
+    </div>
+    <div id="images">
+        <img src="data:image/jpeg;base64,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"
+            alt="">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYqWi94BhxM-yjA_JDm7EnJO1kreBdMDQ6O_am7UWy3EjkAImSPFZ9pc8t7XYQTF70Vm4&usqp=CAU"
+            alt="">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMmD0zd9pHtzzaQfkUE016jd8e1mPZQDTptg&usqp=CAU"
+            alt="">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1E-lXOdsTr-7cSYYcPlPBFnTqC2WND1mexg&usqp=CAU"
+            alt="">
+        <img src="https://img.freepik.com/premium-vector/restaurant-logo-design-template_79169-56.jpg?w=2000" alt="">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3_alVIL9N_BcX0CyLmHyw3FpUTGs9cW7QwQ&usqp=CAU"
+            alt="">
+
+    </div>
+    <div id="sliding">
+        <img src="https://img4.nbstatic.in/tr:w-2800/63b3af1e22b317000c1336a8.jpg" alt="">
+        <img src="https://img4.nbstatic.in/tr:w-2800/63bfbb0d8db992000b7a17dc.jpg" alt="" style="display: none;">
+        <img src="https://img4.nbstatic.in/tr:w-2800/63c4f59222b317000b619c56.jpg" alt="" style="display: none;">
+    </div>
+
+    <div id="sliding2">
+        <img src="https://img4.nbstatic.in/tr:w-2800/636b8e7f22b317000b638322.jpg" alt="">
+        <img src="https://img4.nbstatic.in/tr:w-2800/637b4c8a22156b000b18f311.jpg" alt="" style="display: none;">
+        <img src="https://img4.nbstatic.in/tr:w-2800/637dac5222b317000b774c8b.jpg" alt="" style="display: none;">
+
+    </div>
+
+
+    <div id="dropdown">
+        <h1>Pick a City</h1>
+         <p>To-find your offer</p> 
+         <input type="text" placeholder="Enter your city name"> 
+         <div>
+            <button>vishal</button> 
+            <button>vishal</button> 
+            <button>vishal</button> 
+            <button>vishal</button> 
+            <button>vishal</button> 
+            <button>vishal</button> 
+            <button>vishal</button> 
+            <button>vishal</button> 
+            <button>vishal</button> 
+            <button>vishal</button> 
+            <button>vishal</button> 
+           
+           
+         </div> 
+     </div>
+
+
+
+
+
+</body>
+<script>
+    let count = 1;
+    let images = document.querySelectorAll("#sliding img");
+    setInterval(function () {
+        if (images.length > 0) {
+            images[(count - 1) % (images.length)].style.display = "none";
+            images[count % (images.length)].style.display = "block";
+        }
+        count++
+    }, 2000)
+
+    let count1 = 1;
+    let imagess = document.querySelectorAll("#sliding2 img");
+    setInterval(function () {
+        if (imagess.length > 0) {
+            imagess[(count - 1) % (images.length)].style.display = "none";
+            imagess[count % (images.length)].style.display = "block";
+        }
+        count++
+    }, 2000.50)
+
+
+
+
+
+    let Location=document.getElementById("location")
+    Location.addEventListener("click",function(event){
+    let dropdown=document.getElementById("dropdown")
+    
+    
+})
+
+
+
+
+</script>
+
+</html>
