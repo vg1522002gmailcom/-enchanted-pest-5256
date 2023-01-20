@@ -13,6 +13,7 @@
             background-color: black;
             color: white;
             justify-content: space-around;
+
         }
 
         #nav1 {
@@ -88,34 +89,127 @@
             width: 100%;
             height: 150px;
         }
-        #dropdown{
+
+        /* ____Dropdown_____________________________________________________________________________ */
+        #dropdown {
             display: none;
             text-align: center;
-            background-color: azure;
+            background-color: white;
             width: 100%;
             height: 50%;
             z-index: 1;
             /* display:none; */
         }
-        #dropdown>input{
-            padding: 1% 10% 1% 0.5%;
+
+        #dropdown>img {
+            width: 60px;
+            height: 60px;
+            display: flex;
+            justify-content: right;
+            padding-left: 90%;
         }
-        #dropdown>div>button{
+
+        #dropdown>input {
+            padding: 1% 22% 1% 0.5%;
+            margin-bottom: 3%;
+        }
+
+        #dropdown>div>button {
             border-radius: 10%;
         }
+
+        #dropdown {
+            box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: 1;
+        }
+
+        #dropdownlocation>button {
+            padding: 12px;
+            border-radius: 20%;
+        }
+
+        #dropdownlocation>img {
+            width: 15%;
+            height: 10%;
+        }
+        /* Dropdoun END_______________________________________________ */
+
+        /* fechdata______________________________________________________________________________________________________________ */
+
+        #alldata>div>img {
+            width: 271px;
+            height: 200px;
+
+        }
+
+        #alldata>div {
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+            text-align: center;
+
+        }
+
+        #alldata {
+            height: 200%;
+            display: grid;
+            grid-template-columns: 20% 20% 20% 20%;
+            grid-gap: 4%;
+            padding-left: 10%;
+
+
+
+        }
+
+        #alldata>div>button {
+            background-color: red;
+            border-radius: 12%;
+        }
+        #alldata>div>button{
+           margin-bottom: 5%;
+           padding: 2%;
+           font-size: 14px;
+
+        }
+
+
+
+
+
+
+
+
+
+        /* fechdata______________________________________________________________________________________________________________ */
     </style>
 </head>
 
 <body>
+    <a href="./cart.html"></a>
+
+    <div id="dropdown">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRL05g8YUuFbdH7IEyHKCf6z_gTdQQTOyyAvw&usqp=CAU"
+            alt="">
+        <h1>Pick a City</h1>
+        <p>To-find your offer</p>
+        <input type="text" placeholder="Enter your city name">
+        <div id="dropdownlocation">
+            <button>New Delhi</button>
+            <button>Gurgaon</button>
+            <button>Jaipur</button>
+            <button>Bengaluru</button>
+            <button>Mumbai</button>
+            <button>Kolkata</button>
+            <button>Hyderabad</button>
+            <button>Goa</button>
+            <h3>HAVE A GOOD DAY </h3>
+        </div>
+    </div>
     <div id="container">
         <div id="nav1">
-            <h4>My Location</h4>
+            <h4 style="padding-right:5%;">My Location</h4>
             <select name="location" id="location">
-                <option value="">location</option>
-                <!-- <option value="gaderpur">gaderpur</option>
-                <option value="kalinager">kalinager</option>
-                <option value="dineshpur">dineshpur</option>
-                <option value="jaspur">jaspur</option> -->
 
             </select>
 
@@ -125,9 +219,9 @@
         <div id="nav2">
             <p>How it Works | </p>
             <p>List your Business |</p>
-            <h4>LOG IN</h4>
+            <a href="login.html"><h4>LOG IN</h4></a>
             <h4>/</h4>
-            <h4>SIGN IN</h4>
+            <a href="sign_in.html"><h4>SIGN IN</h4></a>
         </div>
     </div>
 
@@ -163,27 +257,9 @@
 
     </div>
 
+    <!-- here to append data -->
+    <div id="alldata"></div>
 
-    <div id="dropdown">
-        <h1>Pick a City</h1>
-         <p>To-find your offer</p> 
-         <input type="text" placeholder="Enter your city name"> 
-         <div>
-            <button>vishal</button> 
-            <button>vishal</button> 
-            <button>vishal</button> 
-            <button>vishal</button> 
-            <button>vishal</button> 
-            <button>vishal</button> 
-            <button>vishal</button> 
-            <button>vishal</button> 
-            <button>vishal</button> 
-            <button>vishal</button> 
-            <button>vishal</button> 
-           
-           
-         </div> 
-     </div>
 
 
 
@@ -191,6 +267,8 @@
 
 </body>
 <script>
+
+    
     let count = 1;
     let images = document.querySelectorAll("#sliding img");
     setInterval(function () {
@@ -210,21 +288,77 @@
         }
         count++
     }, 2000.50)
-
-
-
-
-
-    let Location=document.getElementById("location")
-    Location.addEventListener("click",function(event){
-    let dropdown=document.getElementById("dropdown")
     
     
-})
+    
+    
+    
+    
+    let Location = document.getElementById("location")
+    Location.addEventListener("click", function (event) {
+        document.getElementById("dropdown").style.display = "block";
+    })
 
+    
+
+    
+    let closebutton = document.querySelector("#dropdown>img")
+    closebutton.addEventListener("click", function (evemt) {
+        document.getElementById("dropdown").style.display = "none";
+    })
+    
+    
+    let alldata = document.getElementById("alldata")
+    
+    let api = "https://63c1859a376b9b2e647df271.mockapi.io/E-service"
+    fetch(api)
+        .then(function (request) {
+            console.log(request)
+            return request.json()
+        })
+        .then(function (acttualdata) {
+            display(acttualdata)
+            console.log(acttualdata)
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
+        
+        function display(data) {
+            data.forEach(function (element, i) {
+                
+                let cart = document.createElement("div")
+                
+                let Image = document.createElement("img")
+                let name = document.createElement("h2")
+                let Cost = document.createElement("h3")
+                let Id = document.createElement("h4")
+                let ADDtocart = document.createElement("button")
+                
+                
+                Image.setAttribute("src", element.indian)
+                name.textContent = element.name
+            Cost.textContent = `$`+element.cost
+            Id.textContent = element.id
+            ADDtocart.textContent = "ADD TO CART"
+            
+            ADDtocart.addEventListener("click",function(){
+                let GETDATA=JSON.parse(localStorage.getItem("cart")) || []
+                GETDATA.push(element)
+                localStorage.setItem("cart",JSON.stringify(GETDATA))
+
+            })
+
+
+            cart.append(Image, name, Cost,  Id, ADDtocart)
+            alldata.append(cart)
+
+        })
+    }
 
 
 
 </script>
+
 
 </html>

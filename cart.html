@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+ 
+/* _______fechdata_____________________________________________________________________________________________________________________ */
+#container>div>img {
+            width: 271px;
+            height: 200px;
+
+        }
+
+        #container>div {
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+            text-align: center;
+
+        }
+
+        #container {
+            height: 200%;
+            display: grid;
+            grid-template-columns: 20% 20% 20% 20%;
+            grid-gap: 4%;
+            padding-left: 10%;
+
+
+
+        }
+
+        #container>div>button {
+            background-color: red;
+            border-radius: 12%;
+        }
+        #container>div>button{
+           margin-bottom: 5%;
+           padding: 2%;
+           font-size: 14px;
+
+        }
+
+
+
+/* _______________end____________________________________________________________________ */
+    </style>
+</head>
+<body>
+   <a href="./favourite.html"></a>
+    <div id="container"></div>
+</body>
+
+    <script>
+let container=document.getElementById("container")
+console.log(container)
+let cartpage=JSON.parse(localStorage.getItem("cart"))
+console.log(cartpage)
+
+    function display(cartpage) {
+        cartpage.forEach(function (element) {
+            
+            let cart = document.createElement("div")
+            
+            let Image = document.createElement("img")
+            let name = document.createElement("h2")
+            let Cost = document.createElement("h3")
+            let Id = document.createElement("h4")
+            let ADDtofav = document.createElement("button")
+            
+            
+            Image.setAttribute("src", element.indian)
+            name.textContent = element.name
+            Cost.textContent = `$`+element.cost
+            Id.textContent = element.id
+            ADDtofav.textContent = "FAVOURITE"
+            
+            ADDtofav.addEventListener("click",function(){
+            let favdata=JSON.parse(localStorage.getItem("fav_key")) 
+            favdata.push(element)
+            localStorage.setItem("fav_key",JSON.stringify(favdata))
+            })
+
+
+        cart.append(Image, name, Cost,  Id, ADDtofav)
+        container.append(cart)
+
+    })
+}
+display(cartpage)
+</script> 
+</html>
