@@ -1,0 +1,550 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>My dear</title>
+    <style>
+        body {
+            display: block;
+            margin: 0px;
+        }
+
+        #container {
+            display: flex;
+            /* background-color: whitesmoke; */
+            background-color: gray;
+            color: white;
+            justify-content: space-around;
+
+        }
+
+        #nav1 {
+            display: flex;
+
+        }
+
+        #location {
+            height: 30px;
+            width: 75px;
+            margin-top: 10%;
+            border-radius: 14px;
+        }
+
+        #nav2 {
+            display: flex;
+            align-items: center;
+            justify-content: space-around;
+            text-decoration: none;
+        }
+
+        #navimage>img {
+            width: 150px;
+            height: 50x;
+            padding-right: 40%;
+            margin-left: 5%;
+        }
+
+        #navimage {
+            background-color: beige;
+            display: flex;
+            height: 50px;
+            padding: 1px;
+            padding-top: .5%;
+            padding-bottom: .5%;
+
+
+        }
+
+        #navimage>input {
+            padding-right: 15%;
+            margin-right: 1%;
+        }
+
+        #navimage>button {
+
+            background-color: rgba(0, 128, 0, 0.368);
+            padding-right: 2%;
+            padding-left: 2%;
+            font-size: 30px;
+        }
+
+        #images {
+            padding-top: .5%;
+            display: flex;
+            justify-content: space-between;
+            margin-left: 35%;
+            width: 100px;
+            height: 100px;
+        }
+
+        #images img {
+            padding: 10px;
+        }
+
+        #sliding>img {
+            padding-bottom: 2%;
+            width: 100%;
+            height: 150px;
+            border: 6px solid silver;
+        }
+
+        #sliding2>img {
+            padding-bottom: 2%;
+            width: 100%;
+            height: 150px;
+        }
+
+        /* ____Dropdown_____________________________________________________________________________ */
+        #dropdown {
+            display: none;
+            text-align: center;
+            background-color: white;
+            width: 100%;
+            height: 50%;
+            z-index: 1;
+            /* display:none; */
+        }
+
+        #dropdown>img {
+            width: 50px;
+            height: 60px;
+            display: flex;
+            justify-content: right;
+            padding-left: 90%;
+        }
+
+        #dropdown>input {
+            padding: 1% 22% 1% 0.5%;
+            margin-bottom: 3%;
+        }
+
+
+
+        #dropdown {
+            box-shadow: rgba(17, 12, 46, 0.15) 0px 48px 100px 0px;
+            position: absolute;
+            left: 0px;
+            top: 0px;
+            z-index: 1;
+        }
+
+        #dropdownlocation>button {
+            padding: 12px;
+            border-radius: 20%;
+        }
+
+        #dropdownlocation>img {
+            width: 15%;
+            height: 10%;
+        }
+
+        /* Dropdoun END_______________________________________________ */
+
+        /* fechdata______________________________________________________________________________________________________________ */
+
+        #alldata>div>img {
+            width: 100%;
+            height: 140px;
+
+        }
+
+        #alldata>div {
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+            text-align: center;
+            border-radius: 10%;
+            /* border: 6px solid red; */
+
+        }
+
+        #alldata {
+            height: 100%;
+            display: grid;
+            grid-template-columns: 22% 22% 22% 22%;
+            padding-left: 7%;
+            grid-gap: 45px;
+
+
+
+
+        }
+
+        #alldata div {
+            padding: 50px;
+        }
+
+        #alldata>div>button {
+            background-color: red;
+            border-radius: 12%;
+        }
+
+        #alldata>div>button {
+            margin-bottom: 5%;
+            padding: 2%;
+            font-size: 14px;
+
+        }
+
+
+        .vl {
+            border-left: 3px solid white;
+            height: 210px;
+        }
+
+        .border-green {
+            border: 3px solid green;
+        }
+
+
+        /* fechdata______________________________________________________________________________________________________________ */
+    </style>
+</head>
+
+<body>
+    <a href="./cart.html"></a>
+    <a href="favourite.html"></a>
+
+    <div id="dropdown">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAFwAAABcCAMAAADUMSJqAAAAZlBMVEXz8/UAAAD////09Pbb3N7a3t/z8vf39/no6OoEBATw8PH39/ff4OFFRUXs7O04ODg/Pz8uLi5eXl5SUlJ+fn4nJyZNTU3W1taoqKi3t7cYGBkcHBwhISGamppYWFiKionGxseSkpJJ6+KIAAAC9UlEQVRoge2X61brIBCFIVM7CVByqW3To63x/V/yzJAQqL1YSfxltmtZV4Avu5vhohCLFi1atGjRokWDQABmSB/3msWj5m/ZWfvagr7XATU1YxpcgK2llP9WePPNAldv1FznSXTAV8naGRTr9fqq1exc82tSMgAlDy7km8FrOJp3x5YlJFnXVT9cvpurZLxvKStMoYM+kW3nnegxACK2PN2akmfoTT++kLv8AoH5yG60SMoFIGtknIwPXgffTZbk2+FF45Nh7w4OgHk9stNs90J99snUXDPuGbGL/uk5aTKDdxyTqfuaiX0jisTlL1zIAI10RodZvcxkgm1emABDMgUvdUQbMtEgvi6tH8vRe2Cde98FZTLJ90hX5z6YQlYbn8lZpC2eazpuvV+fyZ7KZBbnNKt6O2J93rOgXc2g2kZouVWwng0+ePfac51MLpQg0HmAx/vMHGxUZYCX9u65+nMyszcyUmX1TJGzb1vG7EKW+Wx09l1c0qu5ktHWH6Zyew65zzKrY96F3Ci796dHZXEyHKJMKoWgqpAMToLTGo98M1swvehftlGpN8UeLqIaZBY/C084mSnO1X7MxCK4i5ef32J8X5JtoYntKzvs32619q/cp64miBPY2OigB7vpc+f6Sb1Ci63PpLxIN6zYQu7T6JB9jJmoiwNzPSTjDqaPpNiHK3Q/lxcFTXcCzP2qLZMOJfBXaM7kC5xm1SeTeD/PPt3o+nY164H+kXYV5WsoV9vtdQjacp02KolNXx27thN3M0XRnTpMXqR0XX50j6XWCbsLfDNZs511ixYt+muCR0rYXdw4txsqkrX5bVkStXN3dJvnU0eSIpwxq5/ImNw+dWrYwH35VvEL7BPOXR6chSH/hscz5IrKz80L9TAckYvnGevDbGE0bw+6DV2enNmxBgYqjCwPFOGMGnvO9R/1or8r/YsS2S/qDvz6sZ4Nrlv61ZkuQ/pyh5zA9Dfx6Ucjd/g8nA7tqqVb8PHYHrtOH29h/gNZRyb1KLY0aAAAAABJRU5ErkJggg=="
+            alt="">
+        <h1>Pick a City</h1>
+        <p>To-find your offer</p>
+
+        <select style="width: 250px;padding: 5px;margin: 5px;" placeholder="Select your city name" onchange="">
+            <option>New Delhi</option>
+            <option>Gurgaon</option>
+            <option>Jaipur</option>
+            <option>Bangluru</option>
+            <option>Mumbai</option>
+            <option>Kolkata</option>
+            <option>Hydrabad</option>
+            <option>Chennai</option>
+            <option>Pune</option>
+        </select>
+        <h1>Top Cities</h1>
+
+        <div id="dropdownlocation">
+            <!-- <button class="border-green">New Delhi</button> -->
+
+            <button class="location border-green">New Delhi</button>
+            <button class="location">Gurgaon</button>
+            <button class="location">Jaipur</button>
+            <button class="location">Bangluru</button>
+            <button class="location">Mumbai</button>
+            <button class="location">Kolkata</button>
+            <button class="location">Hydrabad</button>
+            <button class="location">Chennai</button>
+            <button class="location">Pune</button>
+
+        </div>
+    </div>
+    <div id="container">
+        <div id="nav1">
+            <h4 style="margin-right: 10px;font-size: 15px;">Select Location</h4>
+            <!-- <input value=" "/> -->
+            <select name="location" id="location" disabled>
+                <option>New Delhi</option>
+                <option>Gurgaon</option>
+                <option>Jaipur</option>
+                <option>Bangluru</option>
+                <option>Mumbai</option>
+                <option>Kolkata</option>
+                <option>Hydrabad</option>
+                <option>Chennai</option>
+                <option>Pune</option>
+            </select>
+
+
+
+        </div>
+        <div id="nav2">
+            <span>How it Works </span> &nbsp;|&nbsp;
+            <span> List your Business </span> &nbsp;|&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="login.html">
+                <h4>LogIn</h4>
+            </a>
+            <h4>/</h4>
+            <a href="sign_in.html">
+                <span>SignIn</span>
+            </a>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+            <a href="cart.html">Cart pages</a>
+        </div>
+    </div>
+
+    <div id="navimage">
+        <img src="https://www.shutterstock.com/image-vector/my-dear-phrase-calligraphy-text-600w-1720789417.jpg" alt="">
+        <input type="text" placeholder=" Search restaurants, spa, events " id="search">
+        <button id="searchbtn">Search</button>
+    </div>
+    <div id="images">
+        <img src="data:image/jpeg;base64,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"
+            alt="">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTYqWi94BhxM-yjA_JDm7EnJO1kreBdMDQ6O_am7UWy3EjkAImSPFZ9pc8t7XYQTF70Vm4&usqp=CAU"
+            alt="">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTMmD0zd9pHtzzaQfkUE016jd8e1mPZQDTptg&usqp=CAU"
+            alt="">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS1E-lXOdsTr-7cSYYcPlPBFnTqC2WND1mexg&usqp=CAU"
+            alt="">
+        <img src="https://img.freepik.com/premium-vector/restaurant-logo-design-template_79169-56.jpg?w=2000" alt="">
+        <img src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcS3_alVIL9N_BcX0CyLmHyw3FpUTGs9cW7QwQ&usqp=CAU"
+            alt="">
+
+    </div>
+    <div id="sliding">
+        <img src="https://img4.nbstatic.in/tr:w-2800/63b3af1e22b317000c1336a8.jpg" alt="">
+        <img src="https://img4.nbstatic.in/tr:w-2800/63bfbb0d8db992000b7a17dc.jpg" alt="" style="display: none;">
+        <img src="https://img4.nbstatic.in/tr:w-2800/63c4f59222b317000b619c56.jpg" alt="" style="display: none;">
+    </div>
+
+
+    <div id="sliding2">
+        <img src="https://img4.nbstatic.in/tr:w-2800/636b8e7f22b317000b638322.jpg" alt="">
+        <img src="https://img4.nbstatic.in/tr:w-2800/637b4c8a22156b000b18f311.jpg" alt="" style="display: none;">
+        <img src="https://img4.nbstatic.in/tr:w-2800/637dac5222b317000b774c8b.jpg" alt="" style="display: none;">
+
+    </div>
+
+    <!-- here to append data -->
+    <div id="alldata"></div>
+
+
+    <div style="background-color:#fff2cc;text-align:center;font-size: 100%;padding-bottom: 4%; ">
+        <h1 style="padding-top:5%">Read Hundreds of Reviews</h1>
+        <img src="https://tmetric.com/media/rt1k0zjc/img-rating-4-5.svg" alt="">
+        <h1>4.5 Customer Rating</h1>
+        <a href="https://www.mouthshut.com/websites/Nearbuy-com-reviews-925805356">
+            <h3>242 Reviews</h3>
+        </a>
+
+    </div>
+
+
+    <div style="background-color: silver;font-size: 25px;">
+        <p style="
+    padding: 30px;
+    padding-left: 100px;
+    padding-right: 100px;
+    font-size: 20px;margin: 0px;
+">Amazing offers available on mydear
+            mydear helps you discover the best things to do, eat and buy – wherever you are! Make every day awesome with
+            mydear.
+            Dine at the finest restaurants, relax at the best spas, pamper yourself with exciting wellness and shopping
+            offers or just explore your city intimately… you will always find a lot more to do with mydear.
+            From tattoo parlors to music concerts, movie tickets to theme parks, everything you want is now within
+            reach. Don't stop yet!
+            Take it wherever you go with the mydear mobile app. Based on your location and preference, our smart search
+            engine will suggest new things to explore every time you open the app.
+            What's more, with offers on everything around you... you are sure to try something new every time.</p>
+    </div>
+
+    <div style="display: flex;padding-right: 30%;padding-left:10%;background-color: black;">
+        <div style="display: flex;padding-right: 50%;margin-left:10%;padding-right: 20%;" id="header">
+            <div>
+                <h3 style="color: white">Company</h3>
+                <ul>
+                    <li>
+                        <a href="">About Us</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href=""> Blog </a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="">Policy</a>
+                    </li>
+                </ul>
+                <ul>
+                    <li>
+                        <a href="">Universal Fine Print</a>
+                    </li>
+                </ul>
+
+            </div>
+
+
+            <div>
+                <div>
+                    <h3 style="color: white">Help</h3>
+                    <ul>
+                        <li>
+                            <a href="">Contact Us</a>
+                        </li>
+                    </ul>
+                    <ul>
+                        <li>
+                            <a href="">Sitemap</a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+
+        <div class="vl"></div>
+        <div style="display: flex;">
+
+            <div style="padding-left: 60%;">
+                <h3 style="color: white;">Download app</h3>
+                <img style="width: 200px;" src="https://res4.nbstatic.in/static/images/google-play-badges.svg" alt="">
+            </div>
+            <img style="width: 200px;margin-bottom: 10%;padding-left: 2%;"
+                src="https://res4.nbstatic.in/static/images/app-store.svg" alt="">
+
+        </div>
+
+
+    </div>
+    </div>
+
+
+
+</body>
+<script>
+
+
+
+
+
+
+var datafromapi = [];
+
+    let count = 1;
+    let images = document.querySelectorAll("#sliding img");
+    setInterval(function () {
+        if (images.length > 0) {
+            images[(count - 1) % (images.length)].style.display = "none";
+            images[count % (images.length)].style.display = "block";
+        }
+        count++
+    }, 2000)
+
+    let count1 = 1;
+    let imagess = document.querySelectorAll("#sliding2 img");
+    setInterval(function () {
+        if (imagess.length > 0) {
+            imagess[(count - 1) % (images.length)].style.display = "none";
+            imagess[count % (images.length)].style.display = "block";
+        }
+        count++
+    }, 2000.50)
+
+
+
+
+
+
+    let Location = document.getElementById("nav1")
+    Location.addEventListener("click", function (event) {
+        document.getElementById("dropdown").style.display = "block";
+    })
+
+    let locations = document.getElementsByClassName("location")
+    for (let i = 0; i < locations.length; i++) {
+        locations[i].addEventListener("click", function (event) {
+            document.getElementById("location").value = event.target.innerText;
+            for (let j = 0; j < locations.length; j++) {
+                locations[j].classList.remove("border-green");
+            }
+            event.target.classList.add("border-green");
+        })
+    }
+
+    let closebutton = document.querySelector("#dropdown>img")
+    closebutton.addEventListener("click", function (evemt) {
+        document.getElementById("dropdown").style.display = "none";
+    })
+
+
+    let alldata = document.getElementById("alldata")
+    let api = "https://63c1859a376b9b2e647df271.mockapi.io/E-service"
+    fetch(api)
+        .then(function (request) {
+            console.log(request)
+            return request.json()
+        })
+        .then(function (acttualdata) {
+            datafromapi = acttualdata;
+            
+            // console.log(datafromapi.length)
+            display(acttualdata)
+            console.log(acttualdata)
+        })
+        .catch(function (error) {
+            console.log(error)
+        })
+
+   
+
+    function display(data) {
+
+        alldata.innerHTML = ''
+        
+        data.forEach(function (element, i) {
+
+
+            let cart = document.createElement("div")
+            let Image = document.createElement("img")
+            let name = document.createElement("h2")
+            let Cost = document.createElement("h3")
+            let Id = document.createElement("h4")
+            let ADDtocart = document.createElement("button")
+
+
+            Image.setAttribute("src", element.indian)
+            name.textContent = element.name
+            Cost.textContent = `$` + element.cost
+            Id.textContent = element.id
+            ADDtocart.textContent = "ADD TO CART"
+
+            ADDtocart.addEventListener("click", function () {
+                let GETDATA = JSON.parse(localStorage.getItem("cart")) || []
+                GETDATA.push(element)
+                localStorage.setItem("cart", JSON.stringify(GETDATA))
+                alert("Add to cart")
+
+
+            })
+
+
+            cart.append(Image, name, Cost, Id, ADDtocart)
+            alldata.append(cart)
+
+        })
+       
+    }
+   
+       
+    let searchbtn = document.getElementById("searchbtn")
+    searchbtn.addEventListener("click", function (event) {
+        event.preventDefault();
+        let search = (document.querySelector("#search").value).toLowerCase()
+
+        let filterdata = []
+        for (let i = 0; i < datafromapi.length; i++) {
+            // console.log(datafromapi.length,"ndlugv")
+            if (datafromapi[i].name.toLowerCase().includes(search)) {
+                filterdata.push(datafromapi[i])
+                console.log(filterdata.length)
+            }
+        }
+        display(filterdata)
+    })
+
+        
+
+    
+
+
+
+
+
+
+
+</script>
+
+
+</html>

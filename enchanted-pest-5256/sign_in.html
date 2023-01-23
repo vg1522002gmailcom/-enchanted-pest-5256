@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>sign_in</title>
+    <style>
+        #main_div {
+            
+            display: flex !important;
+            margin: auto;
+            border-radius: 10px;
+            box-shadow: rgba(0, 0, 0, 0.16) 0px 1px 4px;
+            width: 80%;
+        }
+
+        button {
+            background-color: blue;
+            color: aliceblue;
+            width: 60%;
+            padding-top: 2%;
+            padding-bottom: 2%;
+        }
+
+        #cart {
+            height: 710px;
+            width: 470px;
+            border-radius: 1%;
+            margin-left: 18%;
+            padding-left: 7%;
+            /* box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset; */
+        }
+        #cart>img{
+            width: 200px;
+            height: 110px;
+        }
+
+       _______________________________________________________________________________________________________*/ */
+    </style>
+</head>
+
+<body>
+
+    <div id="main_div">
+        <div style="padding: 20px;">
+            <div id="cart">
+                <img src="https://www.shutterstock.com/image-vector/my-dear-phrase-calligraphy-text-600w-1720789417.jpg" alt="">
+                 <h1>Create Your Account</h1>
+                <form id="formdata">
+                    <label style="display:block; " for="name">Name</label>
+                    <input style="width:60%;margin-bottom:4%" type="text" placeholder="Full name" id="name"> <br>
+                    <label style="display:block" for="email">Email</label>
+                    <input style="width:60% ;margin-bottom:4%" type="text" placeholder="vishal@gmail.com"
+                        id="email"><br>
+                    <label style="display:block" for="password">Password</label>
+                    <input style="width:60%;margin-bottom:4%" type="password" placeholder="Enter your password"
+                        id="password"> <br>
+                    <input type="checkbox">I accept Terms of service <br>
+                    <button>sign Up</button>
+
+                </form>
+
+
+                <div style="display: flex; margin-bottom:4%;">
+                    <hr style="width:38%;text-align:left;margin-left:0">
+                    or
+                    <hr style="width:47%;text-align:left;margin-right:39%">
+                </div>
+
+                <div>
+
+                    <div
+                        style="display: flex; border: 1px solid black; width: 300px; border-radius: 10px;margin-bottom:4%">
+                        <div>
+                            <img style="margin-top: 18px; margin-right: 10px; margin-left: 10px;"
+                                src="https://id.tmetric.com/images/google_logo.svg" alt="">
+                        </div>
+                        <div>
+                            <p>
+                                Sign Up with Google
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        style="display: flex; border: 1px solid black; width: 300px; border-radius: 10px;margin-bottom:4%">
+                        <div>
+                            <img style="margin-top: 18px; margin-right: 10px; margin-left: 10px;"
+                                src="https://id.tmetric.com/images/microsoft_logo.svg" alt="">
+                        </div>
+                        <div>
+                            <p>
+                                Sign Up with Microsoft
+                            </p>
+                        </div>
+                    </div>
+
+                    <div
+                        style="display: flex; border: 1px solid black; width: 300px; border-radius: 10px;margin-bottom:4%">
+                        <div>
+                            <img style="margin-top: 18px; margin-right: 10px; margin-left: 10px;"
+                                src="https://id.tmetric.com/images/apple_logo.svg" alt="">
+                        </div>
+                        <div>
+                            <p>
+                                Sign Up with Apple
+                            </p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+
+        <div style=" margin-left: 100px; background-color:  rgb(235, 235, 243); width: 100%;"  >
+            <img src="https://id.tmetric.com/images/side_image_register.svg" width="100%" height="100%" alt="">
+        </div>
+
+    </div>
+
+   
+
+</body>
+<script>
+
+
+let localdata=JSON.parse(localStorage.getItem("local_key")) || []
+
+let myform=document.getElementById("formdata")
+myform.addEventListener("submit",function(event){
+    event.preventDefault();
+
+    let obj={
+        Name:myform.name.value,
+        Email:myform.email.value,
+        Password:myform.password.value,
+    }
+    console.log(obj)
+    if(myform.name.value=="" || myform.email.value=="" || myform.password.value=="" ){
+        alert("please fill details")
+    }else{
+        localdata.push(obj)
+        // console.log(obj)
+        alert("Registered sucessfully")
+        localStorage.setItem("local_key",JSON.stringify(localdata))
+        window.location.assign("./login.html")
+    }
+    
+   
+})
+</script>
+
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>cart</title>
+    <style>
+ /* nav____________________________________________________________________________________________________ */
+
+ #container {
+            display: flex;
+            color: black;
+            justify-content: space-around;
+
+        }
+
+#cartnav{
+    display: flex;
+    justify-content: space-around;
+    background-color: black;
+   padding: 2%;
+   margin-bottom: 2%;
+   padding-left:80%;
+   font-size: large;
+}
+
+/* _______fechdata_____________________________________________________________________________________________________________________ */
+#container>div>img {
+            width: 271px;
+            height: 200px;
+
+        }
+
+        #container>div {
+            box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+            text-align: center;
+            border-radius: 30%;
+          
+        }
+
+        #container {
+            height: 200%;
+            display: grid;
+            grid-template-columns: 20% 20% 20% 20%;
+            grid-gap: 4%;
+            padding-left: 5%;
+            padding-right: 5%;
+
+
+        }
+
+        #container>div>button {
+            background-color: red;
+
+        }
+        #container>div>button{
+           margin-bottom: 5%;
+           padding: 2%;
+           font-size: 14px;
+
+        }
+        #selectitem{
+            padding: 4px;
+        margin-left: 7%;
+        margin-bottom: 2%;
+        }
+
+
+
+/* _______________end____________________________________________________________________ */
+    </style>
+</head>
+<body>
+</div>
+ <div id="cartnav">
+    <a style="color: white;" href="./index.html">Back</a>
+    <a style="color: white;" href="./paymentpage.html">Payment</a>
+ </div>
+
+ <select name="select" id="selectitem">
+<option value="">SELECT</option>
+<option value="low">low to high</option>
+<option value="high">high to low</option>
+ </select>
+</div>
+
+   <a href="./favourite.html"></a>
+    <div id="container"></div>
+</body>
+
+    <script>
+let selectsort=document.getElementById("selectitem")
+selectsort.addEventListener("change",function(event){
+    var arr = cartpage;
+    if(event.target.value==="low"){
+        arr = cartpage.sort(function(a,b){
+            return (a.cost - b.cost)
+        })
+    }else if(event.target.value==="high"){
+        arr = cartpage.sort(function(a,b){
+            return (b.cost - a.cost)
+        })
+    }
+    display(arr)
+})
+
+
+let container=document.getElementById("container")
+// console.log(container)
+let cartpage=JSON.parse(localStorage.getItem("cart"))
+// console.log(cartpage)
+
+function display(cartpage) {
+    container.innerHTML= '';
+    cartpage.forEach(function (element ,i) {
+        
+        let cart = document.createElement("div")
+        let Image = document.createElement("img")
+        let name = document.createElement("h2")
+        let Cost = document.createElement("h3")
+        let Id = document.createElement("h4")
+        let ADDtodel= document.createElement("button")
+        
+        Image.setAttribute("src", element.indian)
+        name.textContent = element.name
+        Cost.textContent = `$`+element.cost
+        Id.textContent = element.id
+        ADDtodel.textContent = "REMOVE"
+
+        ADDtodel.addEventListener("click",function(){
+            cartpage.splice(i,1)
+            localStorage.setItem("cart",JSON.stringify(cartpage))
+            display(cartpage)
+        })
+        
+        cart.append(Image, name, Cost, ADDtodel)
+        container.append(cart)
+    })
+}
+
+display(cartpage)
+
+</script> 
+</html>

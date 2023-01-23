@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>login</title>
+    <style>
+        .apart {
+            display: flex;
+            border: 1px solid black;
+            width: 300px;
+            border-radius: 10px;
+            margin-bottom: 4%
+        }
+
+        label {
+            display: block;
+            margin-bottom: 2%;
+        }
+
+        input {
+            display: block;
+            margin-bottom: 2%;
+            padding: 5% 50% 5% 10%;
+            
+            /* border: 1px solid red; */
+        }
+
+        #button {
+            background-color: red;
+            border-radius: 8px;
+            padding: 5% 60% 10% 25%;
+            color: black;
+            font-size: 35px;
+        }
+
+        #container {
+            border: 1px solid black;
+            margin-right: 45%;
+            margin-left: 20%;
+            padding: 3% 10% 5% 10%;
+            background-color: whitesmoke;
+        }
+
+        #color>img {
+            width: 200px;
+            height: 110px
+        }
+    </style>
+</head>
+
+<body>
+    <div id="container">
+        <div id="color">
+            <img src="https://www.shutterstock.com/image-vector/my-dear-phrase-calligraphy-text-600w-1720789417.jpg"
+                alt="">
+
+            <a href="https://id.tmetric.com/images/tmetric_logo_and_text.svg"></a>
+            <h2>Log into TMetric</h2>
+        </div>
+        <form id="form">
+            <label for="email">Email</label>
+            <input type="text" placeholder="vishal@gmail.com" id="email">
+
+
+            <label for="password">Password</label>
+            <input type="text" placeholder="Enter your password" id="password">
+
+            <input type="submit" id="button" >
+        </form>
+
+        <div style="display: flex;margin-bottom:4%;">
+            <hr style="width:500%;text-align:left;margin-left:0">
+            or
+            <hr style="width:500%;text-align:left;margin-right:-35%">
+        </div>
+
+        <div>
+            <div class="apart">
+                <div>
+                    <img style="margin-top: 18px; margin-right: 10px; margin-left: 10px;"
+                        src="https://id.tmetric.com/images/google_logo.svg" alt="">
+                </div>
+                <div>
+                    <p>
+                        Sign Up with Google
+                    </p>
+                </div>
+            </div>
+
+            <div class="apart">
+                <div>
+                    <img style="margin-top: 18px; margin-right: 10px; margin-left: 10px;"
+                        src="https://id.tmetric.com/images/microsoft_logo.svg" alt="">
+                </div>
+                <div>
+                    <p>
+                        Sign Up with Microsoft
+                    </p>
+                </div>
+            </div>
+
+            <div class="apart">
+                <div>
+                    <img style="margin-top: 18px; margin-right: 10px; margin-left: 10px;"
+                        src="https://id.tmetric.com/images/apple_logo.svg" alt="">
+                </div>
+                <div>
+                    <p>
+                        Sign Up with Apple
+                    </p>
+                </div>
+            </div>
+
+        </div>
+
+
+    </div>
+</body>
+<script>
+
+    var data = JSON.parse(localStorage.getItem("local_key"))
+    let form=document.getElementById("form")
+    form.addEventListener("submit",function(event){
+    event.preventDefault();
+     
+    
+
+        let email=form.email.value;
+        let password=form.password.value
+        
+        data.forEach(function(el){
+            if(email===el.Email &&  password===el.Password){
+                window.location.href="index.html"
+                alert("Login sucessfully")
+            }else {
+                alert(" check credentials")
+            }
+           
+        })
+
+
+       
+    })
+
+
+
+
+
+    
+</script>
+
+</html>
